@@ -1,0 +1,15 @@
+<?php
+/**
+ * @link      https://github.com/weierophinney/phlyql_resource for the canonical source repository
+ * @copyright Copyright (c) 2013 Matthew Weier O'Phinney
+ * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ */
+
+namespace PhlyTest;
+
+use Phly\SqliteResource;
+use PHPUnit_Framework_TestCase as TestCase;
+
+class SqliteResourceTest extends TestCase
+{
+}

@@ -1,0 +1,31 @@
+{
+    "name": "phly/sqlite-resource",
+    "description": "Library for persisting JSON resources in SQLite",
+    "keywords": ["sqlite", "rest", "json"],
+    "homepage": "https://github.com/weierophinney/phlyql_resource",
+    "type": "library",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Matthew Weier O'Phinney",
+            "email": "me@mwop.net",
+            "homepage": "http://mwop.net/"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.zendframework.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-math": "2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/",
+            "test/"
+        ]
+    }
+}
