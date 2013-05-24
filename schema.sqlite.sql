@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS collection (
+    id CHARACTER(32) PRIMARY KEY,
+    data BLOB NOT NULL
+);
