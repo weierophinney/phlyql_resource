@@ -82,7 +82,7 @@ class SqliteResource
             }
         }
 
-        $stmt = $this->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
 
         if (!$stmt->execute($args)) {
             $errorInfo = $stmt->errorInfo();

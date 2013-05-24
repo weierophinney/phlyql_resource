@@ -132,8 +132,43 @@ class SqliteResourceTest extends TestCase
         $fetch = $this->resource->fetch($created['id']);
     }
 
+    public function seedResources()
+    {
+        $template = array(
+            'foo' => 'bar',
+            'bar' => 'baz',
+        );
+
+        $resources = array();
+        for ($i = 0; $i < 100 ; $i += 1) {
+            $resources[] = $this->resource->create($template);
+        }
+
+        return $resources;
+    }
+
     public function testCanFetchAllResources()
     {
-        $this->markTestIncomplete();
+        $expected  = $this->seedResources();
+        $resources = $this->resource->fetchAll();
+        $this->assertEquals($expected, $resources);
+    }
+
+    public function testCanFetchResourcesUsingLimit()
+    {
+        $allResources = $this->seedResources();
+        $expected     = array_slice($allResources, 0, 10);
+
+        $resources = $this->resource->fetchAll(10);
+        $this->assertEquals($expected, $resources);
+    }
+
+    public function testCanFetchResourcesUsingLimitAndOffset()
+    {
+        $allResources = $this->seedResources();
+        $expected     = array_slice($allResources, 10, 10);
+
+        $resources = $this->resource->fetchAll(10, 10);
+        $this->assertEquals($expected, $resources);
     }
 }
