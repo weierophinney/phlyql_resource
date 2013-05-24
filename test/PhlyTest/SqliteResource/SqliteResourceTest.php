@@ -5,10 +5,10 @@
  * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  */
 
-namespace PhlyTest;
+namespace PhlyTest\SqliteResource;
 
 use PDO;
-use Phly\SqliteResource;
+use Phly\SqliteResource\SqliteResource;
 use PHPUnit_Framework_TestCase as TestCase;
 
 class SqliteResourceTest extends TestCase
@@ -16,7 +16,7 @@ class SqliteResourceTest extends TestCase
     public function setUp()
     {
         $this->pdo = $pdo = new PDO('sqlite::memory:');
-        $sql = file_get_contents(__DIR__ . '/../../schema.sqlite.sql');
+        $sql = file_get_contents(__DIR__ . '/../../../schema.sqlite.sql');
         $pdo->exec($sql);
 
         $this->resource = new SqliteResource($pdo, 'collection');
@@ -59,7 +59,7 @@ class SqliteResourceTest extends TestCase
 
     public function testFetchWillRaiseAnExceptionIfResourceNotFound()
     {
-        $this->setExpectedException('Phly\Exception\FetchException', 'not found');
+        $this->setExpectedException('Phly\SqliteResource\Exception\FetchException', 'not found');
         $fetch = $this->resource->fetch('foo');
     }
 
@@ -128,7 +128,7 @@ class SqliteResourceTest extends TestCase
         $status = $this->resource->delete($created['id']);
         $this->assertTrue($status);
 
-        $this->setExpectedException('Phly\Exception\FetchException', 'not found');
+        $this->setExpectedException('Phly\SqliteResource\Exception\FetchException', 'not found');
         $fetch = $this->resource->fetch($created['id']);
     }
 

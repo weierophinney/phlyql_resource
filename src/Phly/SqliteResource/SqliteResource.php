@@ -5,7 +5,7 @@
  * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  */
 
-namespace Phly;
+namespace Phly\SqliteResource;
 
 use PDO;
 use Zend\Math\Rand;

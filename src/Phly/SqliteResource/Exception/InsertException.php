@@ -5,8 +5,10 @@
  * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  */
 
-namespace Phly\Exception;
+namespace Phly\SqliteResource\Exception;
 
-interface ExceptionInterface
+use RuntimeException;
+
+class InsertException extends RuntimeException implements ExceptionInterface
 {
 }
