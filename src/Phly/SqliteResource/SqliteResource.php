@@ -7,10 +7,11 @@
 
 namespace Phly\SqliteResource;
 
+use Countable;
 use PDO;
 use Zend\Math\Rand;
 
-class SqliteResource
+class SqliteResource implements Countable
 {
     protected $pdo;
 
@@ -20,6 +21,17 @@ class SqliteResource
     {
         $this->pdo   = $pdo;
         $this->table = $table;
+    }
+
+    public function count()
+    {
+        $stmt = $this->pdo->prepare(sprintf(
+            'SELECT COUNT(id) FROM %s',
+            $this->table
+        ));
+        $stmt->execute();
+
+        return $stmt->fetchColumn();
     }
 
     public function create(array $data)

@@ -171,4 +171,10 @@ class SqliteResourceTest extends TestCase
         $resources = $this->resource->fetchAll(10, 10);
         $this->assertEquals($expected, $resources);
     }
+
+    public function testCanRetrieveResourceCount()
+    {
+        $expected = $this->seedResources();
+        $this->assertEquals(count($expected), count($this->resource));
+    }
 }
